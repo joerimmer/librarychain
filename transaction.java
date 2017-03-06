@@ -8,7 +8,6 @@ public class transaction {
         timeStamp = tStamp;
         dueBy = dBy;
     }
-
     public String getBookTitle(){
         return bookTitle;
     }
