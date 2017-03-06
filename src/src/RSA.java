@@ -41,6 +41,16 @@ public class RSA {
         return a.multiply(b.divide(a.gcd(b)));
     }
 
+    public BigInteger sign(Object obj)
+    {
+        Random rand = new Random();
+        int hash = obj.hashCode();
+
+        BigInteger signedHash = encrypt(new BigInteger(hash, rand));
+
+        return signedHash;
+    }
+
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         RSA rsa = new RSA(1024);
