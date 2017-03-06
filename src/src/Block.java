@@ -7,10 +7,23 @@ import java.util.ArrayList;
  */
 public class Block
 {
-    public ArrayList<Pair<Transaction, BigInteger>> Transactions;   // tx-signature pairs
+    public BigInteger PreviousBlockSignature;
+    private ArrayList<Pair<Transaction, BigInteger>> Transactions;   // tx-signature pairs
 
-    public Block()
+    public Block(BigInteger PreviousBlockSignature)
     {
+        this.PreviousBlockSignature = PreviousBlockSignature;
         Transactions = new ArrayList<Pair<Transaction, BigInteger>>();
+    }
+
+    public void AddTransaction(Transaction tx, RSA rsa)
+    {
+        BigInteger signature = rsa.sign(tx);
+        Transactions.add(new Pair<>(tx, signature));
+    }
+
+    public int Length()
+    {
+        return Transactions.size();
     }
 }
