@@ -26,14 +26,16 @@ public class RSA {
         d = e.modInverse(totient);
     }
 
+    // we want ANYONE to be able to prove we encrypted it, so encrypt with private key
+    // and decrypt with public key
     public BigInteger encrypt(BigInteger message)
     {
-        return message.modPow(e, n);
+        return message.modPow(d, n);
     }
 
     public BigInteger decrypt(BigInteger message)
     {
-        return message.modPow(d, n);
+        return message.modPow(e, n);
     }
 
     public static BigInteger lcm(BigInteger a, BigInteger b)
