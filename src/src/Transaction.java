@@ -5,10 +5,10 @@ import java.time.format.DateTimeFormatter;
  */
 public class Transaction
 {
-    public String BookID;
-    public String Borrower;
-    public LocalDateTime CheckedOutTimestamp;
-    public LocalDateTime DueByTimestamp;
+    private String BookID;
+    private String Borrower;
+    private LocalDateTime CheckedOutTimestamp;
+    private LocalDateTime DueByTimestamp;
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
